@@ -40,13 +40,14 @@ namespace Sneak_Ladder_Game
         {
             Console.WriteLine("Welcome to the sneak ladder Game");
             int Player_1 = 0;
-
+            int count = 0;
             while (Player_1 < 100)
             {
                 Console.WriteLine("---------------------------------------------------------------------------");
                 Program sneakladderobj = new Program();
                 int Roll_Dice_value = sneakladderobj.Roll_Dice();
                 Console.WriteLine("Roll Dice value is : " + Roll_Dice_value);
+                count = count + 1;
                 int Privious_postion = Player_1;
                 Player_1 = sneakladderobj.Check_Option(Roll_Dice_value, Player_1,Privious_postion);
 
@@ -54,8 +55,9 @@ namespace Sneak_Ladder_Game
                 {
                     Player_1 =  Privious_postion;
                 }
-                Console.WriteLine("Player_1 Position is : " + Player_1);
+                Console.WriteLine("Player Position is : " + Player_1);
             }
+            Console.WriteLine("No of times dice roll: " + count);
         }
     }
 }
