@@ -11,7 +11,7 @@ namespace Sneak_Ladder_Game
             return Roll_Dice_Value;
         }
 
-        public int Check_Option(int Roll_Dice_Value, int Player_1)
+        public int Check_Option(int Roll_Dice_Value, int Player_1,int Privious_postion)
         {
             Random random = new Random();
             int Option = random.Next(0, 3);
@@ -19,11 +19,11 @@ namespace Sneak_Ladder_Game
             switch (Option)
             {
                 case 1:
-                    Console.WriteLine("Ladder");
+                    Console.WriteLine("Player got Ladder");
                     Player_1 = Player_1 + Roll_Dice_Value;
                     break;
                 case 2:
-                    Console.WriteLine("Sneak");
+                    Console.WriteLine("Player got Sneak");
                     Player_1 = Player_1 - Roll_Dice_Value;
                     if (Player_1 < 0)
                     {
@@ -31,7 +31,7 @@ namespace Sneak_Ladder_Game
                     }
                     break;
                 default:
-                    Console.WriteLine("No Play");
+                    Console.WriteLine("Player got No Play");
                     break;
             }
             return Player_1;
@@ -41,14 +41,20 @@ namespace Sneak_Ladder_Game
             Console.WriteLine("Welcome to the sneak ladder Game");
             int Player_1 = 0;
 
-            while (Player_1 <= 100)
+            while (Player_1 < 100)
             {
-                Console.WriteLine("Player 1 Position is " + Player_1);
+                Console.WriteLine("---------------------------------------------------------------------------");
                 Program sneakladderobj = new Program();
                 int Roll_Dice_value = sneakladderobj.Roll_Dice();
                 Console.WriteLine("Roll Dice value is : " + Roll_Dice_value);
-                Player_1 = sneakladderobj.Check_Option(Roll_Dice_value, Player_1);
-                Console.WriteLine("Player_1 Status And Value is : " + Player_1);
+                int Privious_postion = Player_1;
+                Player_1 = sneakladderobj.Check_Option(Roll_Dice_value, Player_1,Privious_postion);
+
+                if (Player_1 > 100)
+                {
+                    Player_1 =  Privious_postion;
+                }
+                Console.WriteLine("Player_1 Position is : " + Player_1);
             }
         }
     }
