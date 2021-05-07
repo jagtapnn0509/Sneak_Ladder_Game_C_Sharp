@@ -15,7 +15,7 @@ namespace Sneak_Ladder_Game
         {
             Random random = new Random();
             int Option = random.Next(0, 3);
-            //Console.WriteLine("Option" + Option);
+
             switch (Option)
             {
                 case 1:
@@ -40,11 +40,16 @@ namespace Sneak_Ladder_Game
         {
             Console.WriteLine("Welcome to the sneak ladder Game");
             int Player_1 = 0;
-            Console.WriteLine("Player 1 Position is " + Player_1);
-            Program sneakladderobj = new Program();
-            int Roll_Dice_value = sneakladderobj.Roll_Dice();
-            Console.WriteLine("Roll Dice value is : " + Roll_Dice_value);
-            Console.WriteLine("Player_1 Status And Value is : " + sneakladderobj.Check_Option(Roll_Dice_value, Player_1));
+
+            while (Player_1 <= 100)
+            {
+                Console.WriteLine("Player 1 Position is " + Player_1);
+                Program sneakladderobj = new Program();
+                int Roll_Dice_value = sneakladderobj.Roll_Dice();
+                Console.WriteLine("Roll Dice value is : " + Roll_Dice_value);
+                Player_1 = sneakladderobj.Check_Option(Roll_Dice_value, Player_1);
+                Console.WriteLine("Player_1 Status And Value is : " + Player_1);
+            }
         }
     }
 }
